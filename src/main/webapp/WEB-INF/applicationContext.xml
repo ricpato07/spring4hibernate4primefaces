@@ -46,6 +46,9 @@
     <bean id="articuloDAO" class="com.spring.jdbc.dao.ImplArticulo">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="bancosDAO" class="com.spring.jdbc.dao.BancosDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
     
     <!-- BOS -->
     <bean id="loginBO" class="com.spring.jhs.bo.LoginImplBO">
@@ -56,6 +59,9 @@
     </bean>
     <bean id="articuloBO" class="com.spring.jhs.bo.ArticuloImplBO">
         <property name="articuloDAO" ref="articuloDAO"></property>
+    </bean>
+    <bean id="bancosBO" class="com.spring.jhs.bo.BancosBOImpl">
+        <property name="bancosDAO" ref="bancosDAO"></property>
     </bean>
     
         

@@ -1,76 +1,76 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <ui:composition template="/template.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="bodyJR">
 
-<h:form id="formaArticulos">
-    <p:focus for="txtArticulo"/>
-<center>
+        <h:form id="formaArticulos">
+            <p:focus for="txtArticulo"/>
+            <center>
 
-<table>
-<tr>
-<td style="font-weight: bold; size: 12px; color: blue;" align="right">Id articulo: </td>
-<td><p:inputText id="txtArticulo" value="#{articuloBean.idArticulo}" required="true" style="background-color: #FBDCDC !important;"
-                 requiredMessage="El valor del campo 'Id articulo' es requerido."/></td>
-<td><p:message for="txtArticulo"/></td>
-</tr>
-<tr>
-<td style="font-weight: bold; size: 12px; color: blue;" align="right">Nombre: </td>
-<td><p:inputText id="txtNombre" value="#{articuloBean.nombre}" required="true" style="background-color: #FBDCDC !important;"
-                 requiredMessage="El valor del campo 'Nombre' es requerido."/></td>
-<td><p:message for="txtNombre"/></td>
-</tr>
-<tr>
-<td style="font-weight: bold; size: 12px; color: blue;" align="right">Drescripcion: </td>
-<td><p:inputText id="txtDescripcion" value="#{articuloBean.descripcion}"/></td>
-</tr>
-<tr>
-<td style="font-weight: bold; size: 12px; color: blue;" align="right">Costo: </td>
-<td><p:inputText id="txtCosto" value="#{articuloBean.costo}" required="true" style="background-color: #FBDCDC !important;"
-                 requiredMessage="El valor del campo 'Costo' es requerido."/></td>
-<td><p:message for="txtCosto"/></td>
-</tr>
-<tr>
-<td style="font-weight: bold; size: 12px; color: blue;" align="right">Precio: </td>
-<td><p:inputText id="txtPrecio" value="#{articuloBean.precio}" required="true" style="background-color: #FBDCDC !important;"
-                 requiredMessage="El valor del campo 'Precio' es requerido."/></td>
-<td><p:message for="txtPrecio"/></td>
-</tr>
+                <table>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;" align="right">Id articulo: </td>
+                        <td><p:inputText id="txtArticulo" value="#{articuloBean.idArticulo}" required="true" style="background-color: #FBDCDC !important;"
+                                     requiredMessage="El valor del campo 'Id articulo' es requerido."/></td>
+                    <td><p:message for="txtArticulo"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;" align="right">Nombre: </td>
+                        <td><p:inputText id="txtNombre" value="#{articuloBean.nombre}" required="true" style="background-color: #FBDCDC !important;"
+                                     requiredMessage="El valor del campo 'Nombre' es requerido."/></td>
+                    <td><p:message for="txtNombre"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;" align="right">Drescripcion: </td>
+                        <td><p:inputText id="txtDescripcion" value="#{articuloBean.descripcion}"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;" align="right">Costo: </td>
+                        <td><p:inputText id="txtCosto" value="#{articuloBean.costo}" required="true" style="background-color: #FBDCDC !important;"
+                                     requiredMessage="El valor del campo 'Costo' es requerido."/></td>
+                    <td><p:message for="txtCosto"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;" align="right">Precio: </td>
+                        <td><p:inputText id="txtPrecio" value="#{articuloBean.precio}" required="true" style="background-color: #FBDCDC !important;"
+                                     requiredMessage="El valor del campo 'Precio' es requerido."/></td>
+                    <td><p:message for="txtPrecio"/></td>
+                    </tr>
 
-<tr>
-<td colspan="2">
-<p:commandButton value="Guardar" action="#{articuloBean.insert}" update="formaArticulos"/>
-<p:commandButton value="Actualizar" action="#{articuloBean.update}" update="@form"/>
-<p:commandButton value="Eliminar" action="#{articuloBean.delete}" update="@form" immediate="true"/>
-</td>
+                    <tr>
+                        <td colspan="2">
+                    <p:commandButton value="Guardar" action="#{articuloBean.insert}" update="formaArticulos"/>
+                    <p:commandButton value="Actualizar" action="#{articuloBean.update}" update="@form"/>
+                    <p:commandButton value="Eliminar" action="#{articuloBean.delete}" update="@form" immediate="true"/>
+                    </td>
 
-</tr>
-</table>
+                    </tr>
+                </table>
 
-    <p:dataTable id="tablaArticulos" value="#{articuloBean.lista}" var="obj" paginator="true"
-                 rowsPerPageTemplate="5, 10, 15, 20, 30, 40, 50"
-                 rowKey="#{obj.idArticulo}"
-                 lazy="true"
-                 selection="#{obj}"
-                 selectionMode="single"
-                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-<p:column headerText="Id articulo" style="text-align: center">
-<h:outputText value="#{obj.idArticulo}"></h:outputText>
-</p:column>
+                <p:dataTable id="tablaArticulos" value="#{articuloBean.lista}" var="obj" paginator="true"
+                             rowsPerPageTemplate="5, 10, 15, 20, 30, 40, 50"
+                             rowKey="#{obj.idArticulo}"
+                             lazy="true"
+                             selection="#{obj}"
+                             selectionMode="single"
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                    <p:column headerText="Id articulo" style="text-align: center">
+                        <h:outputText value="#{obj.idArticulo}"></h:outputText>
+                    </p:column>
 
-<p:column headerText="Nombre" style="text-align: center">
-<h:outputText value="#{obj.nombre}"/>
-</p:column>
-</p:dataTable>
+                    <p:column headerText="Nombre" style="text-align: center">
+                        <h:outputText value="#{obj.nombre}"/>
+                    </p:column>
+                </p:dataTable>
 
-</center>
+            </center>
 
-</h:form>
+        </h:form>
 
-</ui:define>
+    </ui:define>
 </ui:composition>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="bodyJR">
+
+        <h:form id="formulario">
+
+            <table align="center">
+
+                <tr>
+                    <td style="font-weight: bold; size: 12px; color: blue;" align="right">Banco: </td>
+                    <td>
+                <p:inputText 
+                    id="txtBanco" 
+                    value="#{bancosController.sbanco}" 
+                    />
+                </td>
+                <td><p:message for="txtBanco"/></td>
+                </tr>
+                <tr>
+                    <td>
+                <p:commandButton 
+                    type="button" 
+                    value="Cancelar"
+                    update="formulario"
+                    action="#{bancosController.cancelar}" 
+                    style="font-size: 14px; color: blue;"/>
+                </td>
+                <td>
+                <p:commandButton 
+                    value="Aceptar" 
+                    update="formulario"
+                    action="#{bancosController.guardar}" 
+                    style="font-size: 14px; color: blue;"/>
+                </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center; color: blue; font-weight: bold;">
+                <p:outputLabel value="#{bancosController.mensaje}"/>
+                </td>
+                </tr>
+            </table>
+
+            <div>
+                <p:commandButton 
+                    value="Buscar" 
+                    update="@form"
+                    action="#{bancosController.buscar}" 
+                    style="font-size: 14px; color: blue;"/>
+            </div>
+            <p:dataTable id="tabla" var="item" value="#{bancosController.bancoslist}"
+                         rowKey="#{item.idbanco}"
+                         lazy="true"
+                         selection="#{item}"
+                         selectionMode="single"
+                         style="width: 100%; font-size: 14px;" 
+                         widgetVar="widgetTablaAlumnos"
+                         >
+                <p:column>
+                    <p:commandLink action="#{bancosController.editar(item.idbanco)}">
+                        <h:outputText value="Editar" />
+                    </p:commandLink>
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Banco"></h:outputText></f:facet>
+                    <h:outputText value="#{item.sbanco}"></h:outputText>
+                </p:column>
+
+
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

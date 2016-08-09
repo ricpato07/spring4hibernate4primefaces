@@ -38,4 +38,14 @@
     </managed-property>
 </managed-bean>
 
+<managed-bean>
+    <managed-bean-name>bancosController</managed-bean-name>
+    <managed-bean-class>com.spring.jsf.bean.BancosController</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+        <property-name>bancosBO</property-name>
+        <value>#{bancosBO}</value>
+    </managed-property>
+</managed-bean>
+
 </faces-config>
